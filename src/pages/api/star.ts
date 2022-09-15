@@ -15,8 +15,14 @@ const handler: Handler = async ({ request, response }) => {
       try {
         const star = await prisma.star.findMany({});
         response.status(200).json(star);
-      } catch (e) {}
+      } catch (e) {
+        console.error("Request error", e);
+        response.status(500).json({ erro: "Error fetchng posts" });
+      }
       break;
     default:
+      response.setHeader("Allow", ["GET"]);
+      response.status(405).end(`Method ${method} Not Allowed`);
+      break;
   }
 };
