@@ -26,3 +26,5 @@ const handler: Handler = async ({ request, response }) => {
       break;
   }
 };
+
+export default handler;
