@@ -1,14 +1,14 @@
 import { NextApiRequest, NextApiResponse } from "next";
-import prisma from "../../lib/prisma";
+import prisma from "../../src/lib/prisma";
 
 type parameter = {
   request: NextApiRequest;
   response: NextApiResponse;
 };
 
-type Handler = ({ request, response }: parameter) => void;
+type Handler = (request: NextApiRequest, response: NextApiResponse) => void;
 
-const handler: Handler = async ({ request, response }) => {
+const handler: Handler = async (request, response) => {
   const { method } = request;
   switch (method) {
     case "GET":
@@ -17,7 +17,7 @@ const handler: Handler = async ({ request, response }) => {
         response.status(200).json(star);
       } catch (e) {
         console.error("Request error", e);
-        response.status(500).json({ erro: "Error fetchng posts" });
+        response.status(500).json({ error: "Error fetchng posts" });
       }
       break;
     default:
