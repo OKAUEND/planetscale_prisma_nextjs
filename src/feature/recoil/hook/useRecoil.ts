@@ -17,7 +17,7 @@ const recoilAtom = atom({
 //---------------------------------------------
 
 const recoilSelector = selector({
-  key: "recoil-atom",
+  key: "recoil-selector",
   get: ({ get }) => {
     const recoil = get(recoilAtom);
     return `${recoil} Selector`;
