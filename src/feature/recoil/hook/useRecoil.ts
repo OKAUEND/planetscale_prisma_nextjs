@@ -1,4 +1,11 @@
-import { atom, selector, atomFamily, selectorFamily } from "recoil";
+import {
+  atom,
+  selector,
+  atomFamily,
+  selectorFamily,
+  useRecoilState,
+  useRecoilValue,
+} from "recoil";
 
 //---------------------------------------------
 
@@ -19,4 +26,9 @@ const recoilSelector = selector({
 
 //---------------------------------------------
 
-export const useRecoil = () => {};
+export const useRecoil = () => {
+  const [recoil, setRecoil] = useRecoilState(recoilAtom);
+  const recoilState = useRecoilValue(recoilSelector);
+
+  return [recoil, recoilState, setRecoil] as const;
+};
