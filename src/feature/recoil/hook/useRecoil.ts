@@ -32,11 +32,13 @@ const recoilSelector = selector({
 //---------------------------------------------
 
 export const useRecoil = () => {
-  const [recoil, setRecoil] = useRecoilState(recoilAtom);
+  const recoil = useRecoilValue(recoilAtom);
   const recoilState = useRecoilValue(recoilSelector);
-  // const setRecoilAtom = useCallback((text) => setRecoil(text));
+  const setRecoilAtom = useRecoilCallback(({ set }) => (text: string) => {
+    set(recoilAtom, text);
+  });
 
-  return [recoil, recoilState, setRecoil] as const;
+  return [recoil, setRecoilAtom, recoilState] as const;
 };
 
 if (import.meta.vitest) {
