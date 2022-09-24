@@ -49,13 +49,15 @@ if (import.meta.vitest) {
     });
     it("Atom Update TEST", async () => {
       const { result } = renderHook(() => useRecoil(), { wrapper: RecoilRoot });
-      const [recoil, , setRecoil] = result.current;
+
+      expect(result.current[0]).toEqual("");
 
       act(() => {
-        setRecoil("TEST");
+        result.current[1]("TEXT");
       });
 
-      await waitFor(() => expect(recoil).toEqual("TEST"));
+      expect(result.current[0]).toEqual("TEXT");
+      
 
       // expect(recoil).toEqual("TEST");
     });
