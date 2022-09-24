@@ -57,9 +57,19 @@ if (import.meta.vitest) {
       });
 
       expect(result.current[0]).toEqual("TEXT");
-      
+    });
+    it("Selector TEST", async () => {
+      const { result } = renderHook(() => useRecoil(), { wrapper: RecoilRoot });
 
-      // expect(recoil).toEqual("TEST");
+      expect(result.current[0]).toEqual("");
+
+      act(() => {
+        result.current[1]("TEXT");
+      });
+
+      expect(result.current[0]).toEqual("TEXT");
+
+      expect(result.current[2]).toEqual("TEXT-Selector");
     });
   });
 }
