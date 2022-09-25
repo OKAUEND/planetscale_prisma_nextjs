@@ -73,3 +73,18 @@ if (import.meta.vitest) {
     });
   });
 }
+
+//---------------------------------------------
+
+const asycRecoilAtom = atom({
+  key: "asyc-atom",
+  default: selector({
+    key: "asyc-atom-default-selector",
+    get: () => "default-selector",
+  }),
+});
+
+//---------------------------------------------
+const useAsycRecoil = () => {
+  const asycRecoil = useRecoilValue(asycRecoilAtom);
+};
