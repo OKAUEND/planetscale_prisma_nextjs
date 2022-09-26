@@ -85,7 +85,19 @@ const mockServer = setupServer(
   })
 );
 
+function flushPromisesAndTimers(): Promise<void> {
+  return act(
+    () =>
+      new Promise((resolve) => {
+        setTimeout(resolve, 100);
+        vi.useFakeTimers();
+        vi.runAllTimers();
+      })
+  );
+}
+
 //---------------------------------------------
+
 const asycRecoilAtom = atom<string>({
   key: "asyc-atom",
   default: selector({
