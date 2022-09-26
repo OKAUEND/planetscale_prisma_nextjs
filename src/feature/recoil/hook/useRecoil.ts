@@ -89,7 +89,9 @@ const mockServer = setupServer(
   key: "asyc-atom",
   default: selector({
     key: "asyc-atom-default-selector",
-    get: () => "default-selector",
+    get: async () => {
+      return await axios.get<string, string>("/testing");
+    },
   }),
 });
 
