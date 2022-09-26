@@ -79,7 +79,13 @@ if (import.meta.vitest) {
 
 //---------------------------------------------
 
-const asycRecoilAtom = atom({
+const mockServer = setupServer(
+  rest.get("/testing", (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json("Hello!!"));
+  })
+);
+
+//---------------------------------------------
   key: "asyc-atom",
   default: selector({
     key: "asyc-atom-default-selector",
