@@ -86,6 +86,7 @@ const mockServer = setupServer(
 );
 
 //---------------------------------------------
+const asycRecoilAtom = atom<string>({
   key: "asyc-atom",
   default: selector({
     key: "asyc-atom-default-selector",
