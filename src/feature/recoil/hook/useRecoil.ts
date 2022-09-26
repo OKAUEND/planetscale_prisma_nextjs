@@ -102,9 +102,7 @@ const asycRecoilAtom = atom<string>({
   key: "asyc-atom",
   default: selector({
     key: "asyc-atom-default-selector",
-    get: async () => {
-      return await axios.get<string, string>("/testing");
-    },
+    get: async () => await (await axios.get("/testing")).data,
   }),
 });
 
