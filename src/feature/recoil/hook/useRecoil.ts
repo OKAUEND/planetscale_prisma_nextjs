@@ -98,4 +98,6 @@ const mockServer = setupServer(
 //---------------------------------------------
 const useAsycRecoil = () => {
   const asycRecoil = useRecoilValue(asycRecoilAtom);
+
+  return asycRecoil;
 };
