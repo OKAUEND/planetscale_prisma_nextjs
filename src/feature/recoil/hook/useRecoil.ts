@@ -121,5 +121,15 @@ if (import.meta.vitest) {
     afterAll(() => {
       mockServer.close();
     });
+
+    it("デフォルトで最初から値がはいっているか", async () => {
+      const { result } = renderHook(() => useAsycRecoil(), {
+        wrapper: RecoilRoot,
+      });
+
+      await flushPromisesAndTimers();
+
+      expect(result.current).toEqual("Hello!!");
+    });
   });
 }
