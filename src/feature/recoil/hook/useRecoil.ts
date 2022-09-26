@@ -106,6 +106,14 @@ const asycRecoilAtom = atom<string>({
   }),
 });
 
+const asycRecoilSelector = selector({
+  key: "asyc-seletor",
+  get: ({ get }) => {},
+  set:
+    ({ set }) =>
+    () => {},
+});
+
 //---------------------------------------------
 const useAsycRecoil = () => {
   const asycRecoil = useRecoilValue(asycRecoilAtom);
