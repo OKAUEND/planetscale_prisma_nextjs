@@ -101,3 +101,8 @@ const useAsycRecoil = () => {
 
   return asycRecoil;
 };
+
+if (import.meta.vitest) {
+  describe("Recoil Asyc Custom hook TEST", () => {
+  });
+}
