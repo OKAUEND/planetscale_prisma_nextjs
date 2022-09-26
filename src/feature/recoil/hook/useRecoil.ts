@@ -105,5 +105,11 @@ const useAsycRecoil = () => {
 
 if (import.meta.vitest) {
   describe("Recoil Asyc Custom hook TEST", () => {
+    beforeAll(() => {
+      mockServer.listen();
+    });
+    afterAll(() => {
+      mockServer.close();
+    });
   });
 }
