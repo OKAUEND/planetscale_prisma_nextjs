@@ -82,6 +82,15 @@ if (import.meta.vitest) {
 const mockServer = setupServer(
   rest.get("/testing", (req, res, ctx) => {
     return res(ctx.status(200), ctx.json("Hello!!"));
+  }),
+  rest.get("/default", (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json("default"));
+  }),
+  rest.get("/current1", (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json("current1"));
+  }),
+  rest.get("/current2", (req, res, ctx) => {
+    return res(ctx.status(200), ctx.json("current2"));
   })
 );
 
