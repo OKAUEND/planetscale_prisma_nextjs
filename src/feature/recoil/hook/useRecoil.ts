@@ -115,12 +115,24 @@ const asycRecoilAtom = atom<string>({
   }),
 });
 
-const asycRecoilSelector = selector({
+const currentIDAtom = atom<string>({
+  key: "currentID-atom",
+  default: "default",
+});
+
+const asycRecoilSelector = selector<Promise<string>>({
   key: "asyc-seletor",
-  get: ({ get }) => {},
+  get: async ({ get }) => {
+    const currentID = get(currentIDAtom);
+    return await (
+      await axios.get<string>(currentID)
+    ).data;
+  },
   set:
     ({ set }) =>
-    () => {},
+    (newID: string) => {
+      set(currentIDAtom, newID);
+    },
 });
 
 //---------------------------------------------
