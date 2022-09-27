@@ -138,8 +138,13 @@ const asycRecoilSelector = selector<Promise<string>>({
 //---------------------------------------------
 const useAsycRecoil = () => {
   const asycRecoil = useRecoilValue(asycRecoilAtom);
+  const [asycSelectorRecoil, setCurrent] = useRecoilState(asycRecoilAtom);
 
-  return asycRecoil;
+  const setCurrentID = useRecoilCallback(({ set }) => (text: string) => {
+    set(currentIDAtom, text);
+  });
+
+  return [asycRecoil, asycSelectorRecoil, setCurrentID] as const;
 };
 
 if (import.meta.vitest) {
@@ -158,7 +163,7 @@ if (import.meta.vitest) {
 
       await flushPromisesAndTimers();
 
-      expect(result.current).toEqual("Hello!!");
+      expect(result.current[0]).toEqual("Hello!!");
     });
   });
 }
