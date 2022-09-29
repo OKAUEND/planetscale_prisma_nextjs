@@ -165,18 +165,5 @@ if (import.meta.vitest) {
 
       expect(result.current[0]).toEqual("Hello!!");
     });
-    it("currentIDを更新した時に、非同期通信を行い値を取得しているか", async () => {
-      const { result } = renderHook(() => useAsycRecoil(), {
-        wrapper: RecoilRoot,
-      });
-
-      await flushPromisesAndTimers();
-
-      expect(result.current[1]).toEqual("default");
-
-      act(() => {});
-
-      await waitFor(() => {});
-    });
   });
 }
