@@ -138,7 +138,7 @@ const asycRecoilSelector = selector<Promise<string>>({
 //---------------------------------------------
 const useAsycRecoil = () => {
   const asycRecoil = useRecoilValue(asycRecoilAtom);
-  const [asycSelectorRecoil, setCurrent] = useRecoilState(asycRecoilAtom);
+  const asycSelectorRecoil = useRecoilValue(asycRecoilSelector);
 
   const setCurrentID = useRecoilCallback(({ set }) => (text: string) => {
     set(currentIDAtom, text);
